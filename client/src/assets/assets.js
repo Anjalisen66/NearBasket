@@ -33,9 +33,9 @@ import mango2 from '../assets/mango4.webp'
 import mango3 from '../assets/mango5.webp'
 import mango4 from '../assets/mango6.webp'
 import spinach from '../assets/Spinach2.png'
-import spinach2 from '../assets/Spinach3.jpg'
-import spinach3 from '../assets/Spinach4.jpg'
-import spinach4 from '../assets/Spinach5.jpg'
+// import spinach2 from '../assets/Spinach3.jpg'
+// import spinach3 from '../assets/Spinach4.jpg'
+// import spinach4 from '../assets/Spinach5.jpg'
 
 import { FaTruck } from "react-icons/fa";
 import { SiCodefresh } from "react-icons/si";
@@ -200,7 +200,7 @@ export const categories = [
     category: "Vegetable",
     price: 30,
     offerPrice: 25,
-    image: [spinach,spinach2,spinach3,spinach4],
+    image: [spinach],
     description: ["Organic spinach leaves for a healthy meal.","Organic spinach leaves for a healthy meal.","Organic spinach leaves for a healthy meal."],
     createdAt: "2025-04-06T07:00:00Z",
     updatedAt: "2025-04-14T16:00:00Z",
