@@ -24,10 +24,10 @@ import tomato from '../assets/tomato3.jpg'
 import tomato4 from '../assets/tomato4.jpg'
 import tomato5 from '../assets/tomato5.webp'
 import tomato6 from '../assets/tomato6.jpg'
-import broccoli from '../assets/Broccoli.jpg'
-import broccoli2 from '../assets/brocolli2.jpeg'
-import broccoli3 from '../assets/Brocolli3.avif'
-import broccoli4 from '../assets/Brocolli4.jpeg'
+// import broccoli from '../assets/Broccoli.jpg'
+// import broccoli2 from '../assets/brocolli2.jpeg'
+// import broccoli3 from '../assets/Brocolli3.avif'
+// import broccoli4 from '../assets/Brocolli4.jpeg'
 import mango from '../assets/mango3.jpg'
 import mango2 from '../assets/mango4.webp'
 import mango3 from '../assets/mango5.webp'
@@ -170,18 +170,18 @@ export const categories = [
     updatedAt: "2025-04-11T13:00:00Z",
     inStock: true
   },
-  {
-    id: 4,
-    name: "Broccoli",
-    category: "Vegetable",
-    price: 90,
-    offerPrice: 80,
-    image: [broccoli,broccoli2,broccoli3,broccoli4],
-    description: ["Fresh green broccoli, packed with nutrients.","Fresh green broccoli, packed with nutrients.","Fresh green broccoli, packed with nutrients."],
-    createdAt: "2025-04-04T14:20:00Z",
-    updatedAt: "2025-04-15T09:10:00Z",
-    inStock: false
-  },
+  // {
+  //   id: 4,
+  //   name: "Broccoli",
+  //   category: "Vegetable",
+  //   price: 90,
+  //   offerPrice: 80,
+  //   image: [broccoli,broccoli2,broccoli3,broccoli4],
+  //   description: ["Fresh green broccoli, packed with nutrients.","Fresh green broccoli, packed with nutrients.","Fresh green broccoli, packed with nutrients."],
+  //   createdAt: "2025-04-04T14:20:00Z",
+  //   updatedAt: "2025-04-15T09:10:00Z",
+  //   inStock: false
+  // },
   {
     id: 5,
     name: "Mango",
