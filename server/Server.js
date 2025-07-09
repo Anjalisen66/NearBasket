@@ -16,8 +16,8 @@ const port = process.env.PORT || 4000;
 
 
 
-const allowedOrigins = ['http://localhost:5173',
-                       'https://near-basket.vercel.app' ]
+// const allowedOrigins = ['http://localhost:5173',
+//                        'https://near-basket.vercel.app' ]
 
 
 //middleware 
@@ -25,13 +25,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({
-  origin: allowedOrigins,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.options('*', cors({
-  origin: allowedOrigins,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
