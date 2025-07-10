@@ -8,15 +8,32 @@ const Login = () => {
     const [name, setName] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const [loading, setLoading] = React.useState(false);
 
     const onSubmitHandler = async (event) => {
         try {
             event.preventDefault();
+
+            if (loading) return; // Prevent multiple submissions
+
+            // Basic validation
+            if (!email || !password) {
+                toast.error('Please fill in all required fields');
+                return;
+            }
+
+            if (state === 'register' && !name) {
+                toast.error('Please enter your name');
+                return;
+            }
+
+            setLoading(true);
+
             const { data } = await axios.post(`/api/user/${state}`,{
                 name,email,password
             },
                                               {
-                withCredentials: true, 
+                withCredentials: true,
             })
             if (data.success) {
                 navigate('/')
@@ -27,7 +44,18 @@ const Login = () => {
             }
             
         } catch (error) {
-            toast.error(error.message)
+            console.error('Login/Register error:', error);
+            if (error.response?.data?.message) {
+                toast.error(error.response.data.message);
+            } else if (error.message.includes('Network Error')) {
+                toast.error('Network error. Please check your connection and try again.');
+            } else if (error.message.includes('CORS')) {
+                toast.error('Server configuration error. Please try again later.');
+            } else {
+                toast.error(error.message || 'An unexpected error occurred');
+            }
+        } finally {
+            setLoading(false);
         }
 
     }
@@ -61,8 +89,15 @@ const Login = () => {
                         Create an account? <span onClick={() => setState("register")} className="text-primary cursor-pointer">click here</span>
                     </p>
                 )}
-                <button className="bg-primary hover:bg-primary-dull transition-all text-white w-full py-2 rounded-md cursor-pointer">
-                    {state === "register" ? "Create Account" : "Login"}
+                <button
+                    disabled={loading}
+                    className={`w-full py-2 rounded-md transition-all text-white ${
+                        loading
+                            ? 'bg-gray-400 cursor-not-allowed'
+                            : 'bg-primary hover:bg-primary-dull cursor-pointer'
+                    }`}
+                >
+                    {loading ? 'Please wait...' : (state === "register" ? "Create Account" : "Login")}
                 </button>
             </form>
         </div>

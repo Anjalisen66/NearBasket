@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAppContext } from '../../context/AppContext'
+import toast from 'react-hot-toast'
 
 const SellerLogin = () => {
     const { isSeller, setIsSeller, navigate ,axios} = useAppContext();
@@ -9,8 +10,15 @@ const SellerLogin = () => {
      const onSubmitHandler = async (event) => {
        try {
          event.preventDefault();
+
+         // Basic validation
+         if (!email || !password) {
+             toast.error('Please fill in all fields');
+             return;
+         }
+
          const {data} = await axios.post('/api/seller/login',{email,password}, {
-                withCredentials: true, 
+                withCredentials: true,
             })
          if(data.success){
             setIsSeller(true)
@@ -19,7 +27,14 @@ const SellerLogin = () => {
             toast.error(data.message)
          }
        } catch (error) {
-            toast.error(error.message)
+            console.error('Seller login error:', error);
+            if (error.response?.data?.message) {
+                toast.error(error.response.data.message);
+            } else if (error.message.includes('Network Error')) {
+                toast.error('Network error. Please check your connection and try again.');
+            } else {
+                toast.error(error.message || 'Login failed. Please try again.');
+            }
        }
        
     }

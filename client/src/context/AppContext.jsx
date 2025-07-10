@@ -7,6 +7,10 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 
+// Debug logging
+console.log('Axios base URL:', import.meta.env.VITE_BACKEND_URL);
+console.log('Environment mode:', import.meta.env.MODE);
+
 export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
